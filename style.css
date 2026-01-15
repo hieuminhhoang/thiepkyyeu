@@ -1,0 +1,285 @@
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:'Dancing Script','Segoe UI',sans-serif;
+}
+
+/* ================= BODY ================= */
+body{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+
+  background:
+    linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.75)),
+    background-image: url("./bg.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+}
+
+/* ========== INTRO FULL SCREEN (TỐI → SÁNG) ========== */
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  pointer-events:none;
+
+  background:
+    radial-gradient(circle at center,
+      rgba(255,215,0,.35),
+      rgba(0,0,0,.95) 70%
+    );
+
+  animation:introFade 2.4s ease-out forwards;
+}
+
+/* ================= CARD ================= */
+.card{
+  position:relative;
+  width:390px;
+  padding:44px 36px;
+  text-align:center;
+
+  background:rgba(255,255,255,.1);
+  backdrop-filter:blur(14px);
+  border-radius:28px;
+
+  box-shadow:
+    0 35px 80px rgba(0,0,0,.75),
+    inset 0 0 0 1px rgba(255,255,255,.08);
+
+  opacity:0;
+  animation:cardIn 1s cubic-bezier(.2,.8,.2,1) 2s forwards;
+}
+
+/* ===== VIỀN VÀNG MỀM ===== */
+.card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:28px;
+  padding:1.5px;
+  pointer-events:none;
+
+  background:linear-gradient(
+    135deg,
+    rgba(255,215,0,.9),
+    rgba(255,215,0,.3),
+    rgba(255,215,0,.7)
+  );
+
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+}
+
+/* ================= TEXT ================= */
+.cap{
+  font-size:32px;
+  margin-bottom:10px;
+  font-style:italic;
+  color:#ffd700;
+  animation:floatText 4s ease-in-out infinite;
+}
+
+.subtitle{
+  font-family:'Montserrat', sans-serif;
+  font-size:13px;
+  letter-spacing:3px;
+  color:#ddd;
+  opacity:.85;
+}
+
+h1{
+  margin:14px 0;
+  font-size:44px;
+  letter-spacing:2px;
+  font-style:italic;
+  font-weight:600;
+}
+
+/* ===== CHỮ VÀNG LUNG LINH (KHÔNG CHẠY) ===== */
+.gold{
+  background:linear-gradient(
+    120deg,
+    #f5c16c,
+    #fff7d1,
+    #ffd700
+  );
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+
+  animation:goldPulse 3.5s ease-in-out infinite;
+}
+
+.divider{
+  width:90px;
+  height:3px;
+  margin:22px auto;
+  border-radius:2px;
+  background:linear-gradient(90deg,#f5c16c,#fff);
+}
+
+/* ===== TÊN – VIẾT TAY – BAY NHẸ ===== */
+.name{
+  font-family:'Dancing Script', cursive;
+  font-size:26px;
+  letter-spacing:2px;
+  color:#fff;
+  margin-bottom:22px;
+
+  animation:
+    floatText 5s ease-in-out infinite,
+    nameGlow 3s ease-in-out infinite;
+}
+
+/* ================= INFO ================= */
+.info{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:18px;
+}
+
+.info div{
+  width:30%;
+}
+
+.info small{
+  color:#ccc;
+  font-size:11px;
+  letter-spacing:1px;
+}
+
+.info strong{
+  display:block;
+  color:#fff;
+  font-size:18px;
+  margin-top:4px;
+}
+
+.place{
+  font-size:14px;
+  color:#eee;
+  opacity:.9;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes introFade{
+  0%{opacity:1;}
+  70%{opacity:1;}
+  100%{opacity:0;}
+}
+
+@keyframes cardIn{
+  from{
+    opacity:0;
+    transform:translateY(50px) scale(.92);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+/* ===== CHỮ BAY BAY ===== */
+@keyframes floatText{
+  0%,100%{
+    transform:translateY(0);
+  }
+  50%{
+    transform:translateY(-6px);
+  }
+}
+
+/* ===== PHÁT SÁNG NHẸ ===== */
+@keyframes goldPulse{
+  0%,100%{
+    text-shadow:0 0 10px rgba(255,215,0,.4);
+  }
+  50%{
+    text-shadow:0 0 22px rgba(255,215,0,.9);
+  }
+}
+
+@keyframes nameGlow{
+  0%,100%{
+    text-shadow:0 0 8px rgba(255,215,0,.4);
+  }
+  50%{
+    text-shadow:0 0 18px rgba(255,215,0,.85);
+  }
+}
+/* ================= DECOR ================= */
+.decor{
+  position:absolute;
+  pointer-events:none;
+  z-index:0;
+}
+
+.balloon{
+  width:120px;
+  opacity:.9;
+  animation:floatDecor 6s ease-in-out infinite;
+}
+
+.balloon.left{
+  left:5%;
+  top:15%;
+}
+
+.balloon.right{
+  right:5%;
+  top:20%;
+  animation-delay:2s;
+}
+
+.cap{
+  width:90px;
+  opacity:.9;
+}
+
+.cap-left{
+  left:10%;
+  bottom:15%;
+  transform:rotate(-15deg);
+}
+
+.cap-right{
+  right:10%;
+  bottom:18%;
+  transform:rotate(12deg);
+}
+
+.confetti{
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.15;
+  animation:fadeConfetti 5s ease-in-out infinite;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes floatDecor{
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-18px); }
+}
+
+@keyframes fadeConfetti{
+  0%,100%{ opacity:.12; }
+  50%{ opacity:.22; }
+}
+
+
+
+
+
+
+
+
