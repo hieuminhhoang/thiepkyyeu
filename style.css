@@ -216,45 +216,18 @@ h1{
   }
 }
 /* ================= DECOR ================= */
-.decor{
-  position:absolute;
-  pointer-events:none;
-  z-index:0;
+.card {
+  position: relative;
+  z-index: 5;
+  background: rgba(255,255,255,0.85);
+  backdrop-filter: blur(6px);
 }
 
-.balloon{
-  width:120px;
-  opacity:.9;
-  animation:floatDecor 6s ease-in-out infinite;
-}
 
-.balloon.left{
-  left:5%;
-  top:15%;
-}
 
-.balloon.right{
-  right:5%;
-  top:20%;
-  animation-delay:2s;
-}
 
-.cap{
-  width:90px;
-  opacity:.9;
-}
 
-.cap-left{
-  left:10%;
-  bottom:15%;
-  transform:rotate(-15deg);
-}
 
-.cap-right{
-  right:10%;
-  bottom:18%;
-  transform:rotate(12deg);
-}
 
 .confetti{
   inset:0;
@@ -274,6 +247,42 @@ h1{
 @keyframes fadeConfetti{
   0%,100%{ opacity:.12; }
   50%{ opacity:.22; }
+}
+balloon {
+  position: absolute;
+  width: 140px;
+  height: auto;
+  z-index: 1;
+
+  /* KHÔNG blur – KHÔNG opacity */
+  opacity: 1;
+  filter: none;
+
+  pointer-events: none;
+}
+
+/* Vị trí */
+.balloon-left {
+  top: 20%;
+  left: 6%;
+  animation: floatLeft 6s ease-in-out infinite;
+}
+
+.balloon-right {
+  top: 25%;
+  right: 6%;
+  animation: floatRight 6s ease-in-out infinite;
+}
+
+/* Animation */
+@keyframes floatLeft {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-25px); }
+}
+
+@keyframes floatRight {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
 }
 
 
