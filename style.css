@@ -15,7 +15,7 @@ body{
 
   background:
     linear-gradient(rgba(0,0,0,.6), rgba(0,0,0,.75)),
-    background-image: url("./bg.jpg");
+     background-image: url("./bg.jpg");
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
@@ -41,12 +41,13 @@ body::before{
 /* ================= CARD ================= */
 .card{
   position:relative;
+  z-index:5;
   width:390px;
   padding:44px 36px;
   text-align:center;
 
-  background:rgba(255,255,255,.1);
-  backdrop-filter:blur(14px);
+  background:rgba(255,255,255,.85);
+  backdrop-filter:blur(6px);
   border-radius:28px;
 
   box-shadow:
@@ -57,7 +58,7 @@ body::before{
   animation:cardIn 1s cubic-bezier(.2,.8,.2,1) 2s forwards;
 }
 
-/* ===== VIỀN VÀNG MỀM ===== */
+/* ===== VIỀN VÀNG ===== */
 .card::before{
   content:"";
   position:absolute;
@@ -104,7 +105,7 @@ h1{
   font-weight:600;
 }
 
-/* ===== CHỮ VÀNG LUNG LINH (KHÔNG CHẠY) ===== */
+/* ===== CHỮ VÀNG ===== */
 .gold{
   background:linear-gradient(
     120deg,
@@ -114,7 +115,6 @@ h1{
   );
   -webkit-background-clip:text;
   -webkit-text-fill-color:transparent;
-
   animation:goldPulse 3.5s ease-in-out infinite;
 }
 
@@ -126,7 +126,7 @@ h1{
   background:linear-gradient(90deg,#f5c16c,#fff);
 }
 
-/* ===== TÊN – VIẾT TAY – BAY NHẸ ===== */
+/* ===== TÊN ===== */
 .name{
   font-family:'Dancing Script', cursive;
   font-size:26px;
@@ -169,6 +169,18 @@ h1{
   opacity:.9;
 }
 
+/* ================= CONFETTI ================= */
+.confetti{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:.15;
+  pointer-events:none;
+  animation:fadeConfetti 5s ease-in-out infinite;
+}
+
 /* ================= ANIMATION ================= */
 @keyframes introFade{
   0%{opacity:1;}
@@ -187,103 +199,26 @@ h1{
   }
 }
 
-/* ===== CHỮ BAY BAY ===== */
 @keyframes floatText{
-  0%,100%{
-    transform:translateY(0);
-  }
-  50%{
-    transform:translateY(-6px);
-  }
+  0%,100%{ transform:translateY(0); }
+  50%{ transform:translateY(-6px); }
 }
 
-/* ===== PHÁT SÁNG NHẸ ===== */
 @keyframes goldPulse{
-  0%,100%{
-    text-shadow:0 0 10px rgba(255,215,0,.4);
-  }
-  50%{
-    text-shadow:0 0 22px rgba(255,215,0,.9);
-  }
+  0%,100%{ text-shadow:0 0 10px rgba(255,215,0,.4); }
+  50%{ text-shadow:0 0 22px rgba(255,215,0,.9); }
 }
 
 @keyframes nameGlow{
-  0%,100%{
-    text-shadow:0 0 8px rgba(255,215,0,.4);
-  }
-  50%{
-    text-shadow:0 0 18px rgba(255,215,0,.85);
-  }
-}
-/* ================= DECOR ================= */
-.card {
-  position: relative;
-  z-index: 5;
-  background: rgba(255,255,255,0.85);
-  backdrop-filter: blur(6px);
-}
-
-
-
-
-
-
-
-.confetti{
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  opacity:.15;
-  animation:fadeConfetti 5s ease-in-out infinite;
-}
-
-/* ================= ANIMATION ================= */
-@keyframes floatDecor{
-  0%,100%{ transform:translateY(0); }
-  50%{ transform:translateY(-18px); }
+  0%,100%{ text-shadow:0 0 8px rgba(255,215,0,.4); }
+  50%{ text-shadow:0 0 18px rgba(255,215,0,.85); }
 }
 
 @keyframes fadeConfetti{
   0%,100%{ opacity:.12; }
   50%{ opacity:.22; }
 }
-balloon {
-  position: absolute;
-  width: 140px;
-  height: auto;
-  z-index: 1;
 
-  /* KHÔNG blur – KHÔNG opacity */
-  opacity: 1;
-  filter: none;
-
-  pointer-events: none;
-}
-
-/* Vị trí */
-.balloon-left {
-  top: 20%;
-  left: 6%;
-  animation: floatLeft 6s ease-in-out infinite;
-}
-
-.balloon-right {
-  top: 25%;
-  right: 6%;
-  animation: floatRight 6s ease-in-out infinite;
-}
-
-/* Animation */
-@keyframes floatLeft {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-25px); }
-}
-
-@keyframes floatRight {
-  0%,100% { transform: translateY(0); }
-  50% { transform: translateY(-20px); }
-}
 
 
 
